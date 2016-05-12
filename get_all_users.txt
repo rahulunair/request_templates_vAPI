@@ -1,6 +1,5 @@
 GET /user HTTP/1.1
 Accept: application/json
 Content-Type: application/json
-X-Auth-Token: c45412aa3cb74824a222c2f051bd62ac  # This has to be dynamically
-# obtained, how to do that?
+X-Auth-Token: c45412aa3cb74824a222c2f051bd62ac  # do a curl req using the get_tokens and add the real token here?
 
