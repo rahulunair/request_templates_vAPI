@@ -1,0 +1,10 @@
+POST /tokens HTTP/1.1
+Accept: application/json
+Content-type: application/json
+
+{"auth":
+    {"passwordCredentials":
+        {"username": "admin1",
+          "password":"pass1"}
+    }
+}
