@@ -1,0 +1,10 @@
+POST /user HTTP/1.1
+X-Auth-Token: c45412aa3cb74824a222c2f051bd62ac
+Accept: */*
+Content-type: application/json
+
+{"user":
+    {"username": "user100",
+    "password": "100user"}
+}
+
