@@ -2,7 +2,7 @@ import cafe.engine.models.data_interfaces as data_interfaces
 
 
 class UserConfig(data_interfaces.ConfigSectionInterface):
-    SECTION_NAME = 'credentials'
+    SECTION_NAME = 'vAPI'
 
     @property
     def url(self):
