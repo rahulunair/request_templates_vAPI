@@ -1,5 +1,5 @@
 POST /user HTTP/1.1
-X-Auth-Token: c45412aa3cb74824a222c2f051bd62ac
+X-Auth-Token: CALL_EXTERNAL|syntribos.extensions.vAPI.client:get_token|
 Accept: */*
 Content-type: application/json
 
