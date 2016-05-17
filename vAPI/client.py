@@ -34,5 +34,4 @@ def get_token():
         section_name="vAPI").password
 
     access_data = authenticate(url, username, password)
-    print "ENTERED GET_TOKEN_BLOCK, ACCESS DATA IS:: ", access_data
     return access_data["access"]["token"]["id"]
