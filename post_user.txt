@@ -4,8 +4,8 @@ Accept: */*
 Content-type: application/json
 
 {"user":
-    {"username": ALL_EXTERNAL|syntribos.extensions.vAPI.client:get_random_string:[]|,
-     "password" : ALL_EXTERNAL|syntribos.extensions.vAPI.client:get_random_string:[]|
+    {"username" : "ALL_EXTERNAL|syntribos.extensions.vAPI.client:get_random_string:[]|",
+     "password" : "ALL_EXTERNAL|syntribos.extensions.vAPI.client:get_random_string:[]|"
 	}
 }
 
