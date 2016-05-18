@@ -1,4 +1,6 @@
 import json
+import random
+import string
 
 import requests
 
@@ -35,3 +37,15 @@ def get_token():
 
     access_data = authenticate(url, username, password)
     return access_data["access"]["token"]["id"]
+
+
+def get_random_string(length=10, type=None):
+    """
+    A simple random string generator for injecting in places
+    where dynamic strings are required.
+    """
+
+    if type == "ascii":
+        return "".join(random.choice(
+            string.ascii_letters) for i in range(length))
+    return "".join(random.choice(string.printable) for i in range(length))
