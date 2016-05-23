@@ -1,11 +1,12 @@
 POST /user HTTP/1.1
-X-Auth-Token: ALL_EXTERNAL|syntribos.extensions.vAPI.client:get_token:[]|
+X-Auth-Token: CALL_EXTERNAL|syntribos.extensions.vAPI.client:get_token:[]|
 Accept: */*
 Content-type: application/json
 
-{"user":
-    {"username" : "ALL_EXTERNAL|syntribos.extensions.vAPI.client:get_random_string:[]|",
-     "password" : "ALL_EXTERNAL|syntribos.extensions.vAPI.client:get_random_string:[]|"
-	}
+{
+    "user": {
+        "username": "CALL_EXTERNAL|syntribos.extensions.vAPI.client:get_random_string:[10, "ascii"]|",
+        "password": "CALL_EXTERNAL|syntribos.extensions.vAPI.client:get_random_string:[10, "ascii"]|"
+    }
 }
 
