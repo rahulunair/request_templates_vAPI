@@ -7,36 +7,38 @@ import requests
 import syntribos.extensions.vAPI.config
 
 
+config = syntribos.extensions.vAPI.config.UserConfig(section_name="vAPI")
+
+
 def authenticate(url, username=None, password=None):
 
-    url = '{0}/tokens'.format(url)
+    url = "{0}/tokens".format(url)
 
-    kwargs = {}
-    headers = {}
-    kwargs["username"] = username
-    kwargs["password"] = password
-    headers["Content-Type"] = "Application/json"
-    data = {"auth": {"passwordCredentials": kwargs}}
+    creds = {"username": username, "password": password}
+    headers = {"Content-Type": "application/json"}
+    data = {"auth": {"passwordCredentials": creds}}
 
     r = requests.post(url, data=json.dumps(data), headers=headers)
 
     if not r.ok:
         raise Exception("Failed to authenticate")
 
-    return json.loads(r.text)
+    try:
+        dat = json.loads(r.text)
+        return dat
+    except ValueError:
+        return None
 
 
 def get_token():
 
-    url = syntribos.extensions.vAPI.config.UserConfig(
-        section_name="vAPI").url
-    username = syntribos.extensions.vAPI.config.UserConfig(
-        section_name="vAPI").username
-    password = syntribos.extensions.vAPI.config.UserConfig(
-        section_name="vAPI").password
+    url = config.url
+    username = config.username
+    password = config.password
 
     access_data = authenticate(url, username, password)
-    return access_data["access"]["token"]["id"]
+    if access_data:
+        return access_data["access"]["token"]["id"]
 
 
 def get_random_string(length=10, type=None):
