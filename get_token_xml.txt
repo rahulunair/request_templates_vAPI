@@ -1,0 +1,11 @@
+POST /tokens HTTP/1.1
+Accept: */*
+Content-type: application/xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<auth>
+    <passwordCredentials>
+        <username>user1</username>
+        <password>pass1</password>
+    </passwordCredentials>
+</auth>
