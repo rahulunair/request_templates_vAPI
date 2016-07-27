@@ -4,10 +4,10 @@ import string
 
 import requests
 
-import syntribos.extensions.vAPI.config
+from oslo_config import cfg
 
 
-config = syntribos.extensions.vAPI.config.UserConfig(section_name="vAPI")
+CONF = cfg.CONF
 
 
 def authenticate(url, username=None, password=None):
@@ -32,9 +32,13 @@ def authenticate(url, username=None, password=None):
 
 def get_token():
 
-    url = config.url
-    username = config.username
-    password = config.password
+    vAPI_group = cfg.OptGroup(name="vAPI", title="vAPI config")
+    CONF.register_group(vAPI_group)
+    CONF.register_opts(list_vAPI_opts(), group=vAPI_group)
+
+    url = CONF.vAPI.url
+    username = CONF.vAPI.username
+    password = CONF.vAPI.password
 
     access_data = authenticate(url, username, password)
     if access_data:
@@ -51,3 +55,12 @@ def get_random_string(length=10, type=None):
         return "".join(random.choice(
             string.ascii_letters) for i in range(length))
     return "".join(random.choice(string.printable) for i in range(length))
+
+
+def list_vAPI_opts():
+    return [
+        cfg.StrOpt("url", default="", help="vAPI endpoint URL"),
+        cfg.StrOpt("username", default="", help="vAPI username"),
+        cfg.StrOpt("password", default="", help="vAPI user password",
+                   secret=True)
+    ]
